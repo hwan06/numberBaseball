@@ -44,3 +44,52 @@ public static int playGame(int x, int y, int z) throws IOException {
 		int[] usr = new int[3]; // 사용자로부터 입력받은 수 저장
 		count = 0; 
 ```
+**3. 반복문을 통해 사용자에게 입력 받고 정수형으로 변환**
+``` java
+do { // 게임 실행 코드
+				
+	for(int i = 1; i < 4; i++) { 
+		System.out.println(i + "번째 숫자를 입력하세요"); 
+		user = in.readLine(); // 사용자에게 String형으로 입력을 받고,
+		usr[i-1] = new Integer(user).intValue();  // usr 배열방에 저장
+			}
+```
+**4. do-while문을 통해 수가 모두 정해 질때까지 반복하며 입력받은 수가 조건에 맞는지 확인하고 아니면 알려주기**
+``` java
+do {
+	if((usr[0] == 0) || (usr[1] == 0) || (usr[2] == 0)) { // 0인지 확인
+		System.out.println("0은 입력이 안됩니다. 다시 입력해주세요.");
+	} 
+				
+	else if((usr[0] > 9) || (usr[1] > 9) || (usr[2] > 9)) { // 9보다 큰지 확인
+		System.out.println("1부터 9 사이의 숫자만 가능합니다. 다시 입력해주세요.");
+	} 
+				
+	else if((usr[0] == usr[1]) || (usr[1] == usr[2]) || (usr[0] == usr[2])) { // 모두 다른 수 인지 확인
+		System.out.println("세가지 모두 다른 숫자만 가능합니다. 다시 입력해주세요.");
+	}
+	} while ((usr[0] == 0) || (usr[1] == 0) || (usr[2] == 0) || 
+					(usr[0] > 9) || (usr[1] > 9) || (usr[2] > 9)|| 
+					(usr[0] == usr[1]) || (usr[1] == usr[2]) || (usr[0] == usr[2]));
+				
+```
+**5. 세가지 수가 모두 정해져 do-while문을 빠져나왔다면, if문을 통해 strike, ball 카운팅하여 출력해주기**
+``` java
+strike = ball = 0;
+			
+	// 컴퓨터에게 받은 인수와 입력받은 인수가 숫자와 자리 모두 같다면 strike 1증가 //
+			if (usr[0] == com[0]) strike++; 
+			if (usr[1] == com[1]) strike++;
+			if (usr[2] == com[2]) strike++;
+	
+	// 컴퓨터에게 받은 인수와 입력받은 인수가 자리만 같다면 ball 1증가//
+			if (usr[0] == com[1]) ball++;
+			if (usr[0] == com[2]) ball++;
+			if (usr[1] == com[0]) ball++;
+			if (usr[1] == com[2]) ball++;
+			if (usr[2] == com[0]) ball++;
+			if (usr[2] == com[1]) ball++;
+
+			// ball과 strike 출력
+			System.out.println("Ball: " + ball + " " + "Strike: " + strike);
+```
