@@ -73,7 +73,8 @@ do {
 					(usr[0] == usr[1]) || (usr[1] == usr[2]) || (usr[0] == usr[2]));
 				
 ```
-**5. 세가지 수가 모두 정해져 do-while문을 빠져나왔다면, if문을 통해 strike, ball 카운팅하여 출력해주기**
+**5. 세가지 수가 모두 정해져 do-while문을 빠져나왔다면, if문을 통해 strike, ball 카운팅하여 출력해주기**     
+**만약 strike가 3이거나 count가 11이라면 게임 종료**
 ``` java
 strike = ball = 0;
 			
@@ -92,4 +93,54 @@ strike = ball = 0;
 
 			// ball과 strike 출력
 			System.out.println("Ball: " + ball + " " + "Strike: " + strike);
+
+		} while (strike < 3 && count < 11); // strike가 3이거나, count가 11이라면 종료
+
+		return count;
+	}
+```
+**6. result를 생성하여 아규먼트의 길이가 3이라면 바로 플레이어에게 입력을 받고 그 외에는 무작위 난수 발생 메소드를 호출하여 게임을 진행.**
+
+``` java
+public static void main(String[] args) throws IOException {
+
+		int result; // 게임 진행 횟수 저장
+
+		if (args.length == 3) { // 아규먼트의 길이가 3이라면
+
+			int x = Integer.valueOf(args[0]).intValue(); 
+			int y = Integer.valueOf(args[1]).intValue();
+			int z = Integer.valueOf(args[2]).intValue();
+
+			result = playGame(x, y, z); // 입력받은 3개를 인수가 있는 playGame()로 바로 보내 게임 플레이
+		}
+		// 그 외에는
+		else { 
+			result = playGame(); // 무작위로 난수를 발생하여 게임 플레이
+		}
+```
+**아규먼트란 플레이어가 게임을 플레이 하기 전에 게임 진행자가 컴퓨터의 난수 발생 대신 3개의 수를 정할 수 있는데 그 3개의 수를 저장하는 곳이다.**
+**이클립스 기준 경로: 왼쪽 상단에 위치한 Run-> Run configuration-> argument**
+![image](https://github.com/hwan06/numberBaseball/assets/114748934/26817854-51f7-4800-980b-e7e84bb5a7cc)
+
+**7. 마지막으로 게임 진행 횟수에 따른 결과 출력**
+``` java
+		// 진행 횟수가 2 이하
+		if (result <= 2) { 
+			System.out.println("참 잘했어요");
+		} 
+		// 진행 횟수가 5 이하
+		else if (result <= 5) {
+			System.out.println("잘했어요!");
+		} 
+		// 진행 횟수가 9 이하
+		else if (result <= 9) {
+			System.out.println("보통이네요!");
+		} 
+		// 나머지(실패 포함)
+		else {
+			System.out.println("분발하세요!");
+		}
+	}
+}
 ```
