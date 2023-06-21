@@ -48,7 +48,7 @@ public static int playGame(int x, int y, int z) throws IOException {
 ``` java
 do { // 게임 실행 코드
 				
-	for(int i = 1; i < 4; i++) { 
+	for(int i = 1; i <= 3; i++) { 
 		System.out.println(i + "번째 숫자를 입력하세요"); 
 		user = in.readLine(); // 사용자에게 String형으로 입력을 받고,
 		usr[i-1] = new Integer(user).intValue();  // usr 배열방에 저장
@@ -99,7 +99,8 @@ strike = ball = 0;
 		return count;
 	}
 ```
-**6. result를 생성하여 커맨드 라인에서 받은 아규먼트의 길이가 3이라면 바로 플레이어에게 입력을 받고 그 외에는 무작위 난수 발생 메소드를 호출하여 게임을 진행.**    
+**6. result를 생성하여 커맨드 라인에서 받은 아규먼트의 길이가 3이라면 바로 플레이어에게 입력을 받고 그 외에는 무작위 난수 발생 메소드를 호출하여 게임을 진행.**   
+**여기서 게임 플레이가 두개로 나뉘는데, 컴퓨터가 난수 발생을 해주거나, 진행자가 아규먼트 즉 인자를 입력하여 플레이하는 방식으로 나뉜다**
 
 ``` java
 public static void main(String[] args) throws IOException {
@@ -120,8 +121,9 @@ public static void main(String[] args) throws IOException {
 		}
 ```
 **아규먼트란 커맨드 라인에서 인자(argument)를 받아와 게임을 실행하는 것으로, 게임 진행자가 직접 입력한다.**     
-**이클립스 기준 경로: 왼쪽 상단에 위치한 Run-> Run configuration-> argument**      
-![image](https://github.com/hwan06/numberBaseball/assets/114748934/26817854-51f7-4800-980b-e7e84bb5a7cc)
+**밑에 사진은 진행자가 아규먼트를 입력해 놓은 예시이다.**      
+![image](https://github.com/hwan06/numberBaseball/assets/114748934/3986a0b4-9e72-40cc-b98a-0b7a920e3c0c)
+
 
 **7. 마지막으로 게임 진행 횟수에 따른 결과 출력**
 ``` java
@@ -144,3 +146,11 @@ public static void main(String[] args) throws IOException {
 	}
 }
 ```
+## [실행화면]
+### [컴퓨터의 난수 발생을 통해 게임을 플레이한 경우]
+**밑에 보이는 사진과 같이 사용자가 입력한 수를 컴퓨터가 생성한 난수와 비교하며 strike와 ball을 카운팅하여 출력한다.**   
+**저런식으로 점점 경우의 수를 줄여나가 strike 3개를 달성하면 게임 성공이다. 이때, strike는 컴퓨터가 생성한 난수와 자리와 수 모두 일치하면 1이 증가된다. 반면에 ball은 수는 같으나, 자리가 다른 경우에 1이 증가한다.**     
+![image](https://github.com/hwan06/numberBaseball/assets/114748934/5fb4f42c-bc6a-4484-9b2d-cae8f3617084)
+### [인자를 받아 게임을 플레이한 경우]
+**이 경우는 컴퓨터가 난수를 생성하는 것이 아닌 진행자가 직접 수를 입력하고, 그 수를 플레이어가 맞추는 식의 게임 방식이다.**
+**컴퓨터가 난수를 생성해주는 것과의 차이점은 진행자가 수를 정해주는 것이다. 게임 플레이 방식은 위 방식과 달라지는것은 없다.**
