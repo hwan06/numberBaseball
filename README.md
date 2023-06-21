@@ -99,7 +99,7 @@ strike = ball = 0;
 		return count;
 	}
 ```
-**6. result를 생성하여 아규먼트의 길이가 3이라면 바로 플레이어에게 입력을 받고 그 외에는 무작위 난수 발생 메소드를 호출하여 게임을 진행.**
+**6. result를 생성하여 커맨드 라인에서 받은 아규먼트의 길이가 3이라면 바로 플레이어에게 입력을 받고 그 외에는 무작위 난수 발생 메소드를 호출하여 게임을 진행.**    
 
 ``` java
 public static void main(String[] args) throws IOException {
@@ -119,8 +119,8 @@ public static void main(String[] args) throws IOException {
 			result = playGame(); // 무작위로 난수를 발생하여 게임 플레이
 		}
 ```
-**아규먼트란 플레이어가 게임을 플레이 하기 전에 게임 진행자가 컴퓨터의 난수 발생 대신 3개의 수를 정할 수 있는데 그 3개의 수를 저장하는 곳이다.**
-**이클립스 기준 경로: 왼쪽 상단에 위치한 Run-> Run configuration-> argument**
+**아규먼트란 커맨드 라인에서 인자(argument)를 받아와 게임을 실행하는 것으로, 게임 진행자가 직접 입력한다.**     
+**이클립스 기준 경로: 왼쪽 상단에 위치한 Run-> Run configuration-> argument**      
 ![image](https://github.com/hwan06/numberBaseball/assets/114748934/26817854-51f7-4800-980b-e7e84bb5a7cc)
 
 **7. 마지막으로 게임 진행 횟수에 따른 결과 출력**
